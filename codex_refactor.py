@@ -3,10 +3,20 @@ import os
 import glob
 import re
 import shutil
+from dotenv import load_dotenv
+
+# Load environment variables from the .env file
+load_dotenv()
+
+# Load the API key from an environment variable
+api_key = os.environ.get("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("Missing API key. Set the OPENAI_API_KEY environment variable to your API key.")
 
 # Set up the API key
-openai.api_key = "your_openai_api_key_here"
+openai.api_key = api_key
 
+# Rest of your code...
 # Initialize Codex with your API key
 def codex_prompt(prompt):
     response = openai.Completion.create(
