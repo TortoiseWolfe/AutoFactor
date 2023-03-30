@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  refactor:
+    build: .
+    environment:
+      - OPENAI_API_KEY=your_openai_api_key_here
+    volumes:
+      - ./your_repo:/app/your_repo
