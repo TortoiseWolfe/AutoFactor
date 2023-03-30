@@ -91,7 +91,8 @@ def process_files():
 process_files()
 
 if __name__ == "__main__":
-    log_directory = "/app/your_repo/logs"
+    #log_directory = "/app/your_repo/logs"
+    log_directory = "logs"
     os.makedirs(log_directory, exist_ok=True)
     log_file = os.path.join(log_directory, "output.log")
 
