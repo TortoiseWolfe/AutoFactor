@@ -8,6 +8,7 @@ import re
 import shutil
 import sys
 import test
+from your_repo import test
 
 # Load environment variables from the .env file
 load_dotenv()
