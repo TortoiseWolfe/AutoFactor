@@ -4,6 +4,7 @@ import glob
 import re
 import shutil
 from dotenv import load_dotenv
+import test
 
 # Load environment variables from the .env file
 load_dotenv()
@@ -16,11 +17,10 @@ if not api_key:
 # Set up the API key
 openai.api_key = api_key
 
-# Rest of your code...
-# Initialize Codex with your API key
-def codex_prompt(prompt):
+# Initialize GPT-3.5 with your API key
+def gpt35_prompt(prompt):
     response = openai.Completion.create(
-        engine="codex",
+        engine="text-davinci-002",  # Update the engine to GPT-3.5 (Davinci)
         prompt=prompt,
         max_tokens=4150,
         n=1,
@@ -32,7 +32,7 @@ def codex_prompt(prompt):
 
 def refactor_code(language, code):
     prompt = f"Refactor the following {language} code:\n\n{code}\n\nRefactored code:\n{{{{code}}}}\n\nSummary of changes:"
-    response = codex_prompt(prompt)
+    response = gpt35_prompt(prompt)
     
     refactored_code_marker = "{{{code}}}\n\n"
     refactored_code_start = response.find(refactored_code_marker) + len(refactored_code_marker)
@@ -89,3 +89,6 @@ def process_files():
 # Process all files in the repo
 process_files()
 
+if __name__ == "__main__":
+    test.test_example_function()
+    process_files()
