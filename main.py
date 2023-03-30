@@ -1,9 +1,10 @@
+from dotenv import load_dotenv
+import glob
 import openai
 import os
-import glob
 import re
 import shutil
-from dotenv import load_dotenv
+import sys
 import test
 
 # Load environment variables from the .env file
@@ -90,5 +91,16 @@ def process_files():
 process_files()
 
 if __name__ == "__main__":
-    test.test_example_function()
-    process_files()
+    log_directory = "/app/your_repo/logs"
+    os.makedirs(log_directory, exist_ok=True)
+    log_file = os.path.join(log_directory, "output.log")
+
+    with open(log_file, "w") as f:
+        sys.stdout = f
+        sys.stderr = f
+
+        # Run the test_example_function
+        test.test_example_function()
+
+        # Process all files in the repo
+        # process_files()

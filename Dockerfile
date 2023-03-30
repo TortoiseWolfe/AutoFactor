@@ -7,4 +7,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["python", "codex_refactor.py"]
+CMD ["python", "main.py"]
