@@ -1,3 +1,5 @@
+print("Script started")
+
 from dotenv import load_dotenv
 import glob
 import openai
@@ -87,11 +89,8 @@ def process_files():
             print(f"Refactored code ({language}):\n{refactored_code}\n")
             print(f"Summary of changes ({language}):\n{summary}\n")
 
-# Process all files in the repo
-process_files()
 
 if __name__ == "__main__":
-    #log_directory = "/app/your_repo/logs"
     log_directory = "logs"
     os.makedirs(log_directory, exist_ok=True)
     log_file = os.path.join(log_directory, "output.log")
@@ -100,8 +99,10 @@ if __name__ == "__main__":
         sys.stdout = f
         sys.stderr = f
 
+        print("Script started")
+
         # Run the test_example_function
         test.test_example_function()
 
         # Process all files in the repo
-        # process_files()
+        process_files()
