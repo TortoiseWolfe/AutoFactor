@@ -9,3 +9,4 @@ services:
     volumes:
       - ./your_repo:/app/your_repo
       - ./logs:/app/logs
+      - ./:/app
